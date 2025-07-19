@@ -7,6 +7,11 @@ nombre:{
         type:String,
         required:true,
 },
+codigo: {
+    type: String,
+    unique: true,    
+    required: true,  
+  },
 
 nacimiento:{
     type:Date,

@@ -10,6 +10,11 @@ nombre:{
 debut:{
 type:Date
 },
+codigo: {
+    type: String,
+    unique: true,    
+    required: true,  
+  },
 empresa:{
 type:(mongoose.Schema.Types.ObjectId),
 ref:'empresa'

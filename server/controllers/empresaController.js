@@ -13,10 +13,11 @@ const getEmpresa=async(req,res)=>{
 
 const crearEmpresa= async(req,res)=>{
     try {
-        const {nombre,sede,fundacion,subsidiaria} =req.body
+        const {nombre,codigo,sede,fundacion,subsidiaria} =req.body
 
         const nuevaEmpresa= new Empresa({
          nombre,
+         codigo,
          sede,
          fundacion,
          subsidiaria  

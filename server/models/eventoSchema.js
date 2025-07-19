@@ -9,6 +9,11 @@ const cancionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'grupo',
   },
+  codigo: {
+    type: String,
+    unique: true,    
+    required: true,  
+  },
   album: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'album',

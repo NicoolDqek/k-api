@@ -4,7 +4,10 @@ require('dotenv').config();
 const  grupoRouter= require('./routes/grupoRouter'); 
 const  empresaRouter= require('./routes/empresaRouter'); 
 const  integranteRouter= require('./routes/integranteRouter'); 
-
+const  fandomRouter= require('./routes/fandomRouter'); 
+const  subUnidadRouter= require('./routes/subUnidadRouter'); 
+const  albumRouter= require('./routes/albumRouter'); 
+const  cancionRouter= require('./routes/cancionRouter'); 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +18,10 @@ app.use(express.json());
 app.use('/grupo',grupoRouter)
 app.use('/empresa',empresaRouter)
 app.use('/integrante',integranteRouter)
-
+app.use('/fandom',fandomRouter)
+app.use('/subUnidad',subUnidadRouter)
+app.use('/album',albumRouter)
+app.use('/cancion',cancionRouter)
 app.get('/', (req, res) => {
   res.send('API KPOP funcionando 🎤');
 });

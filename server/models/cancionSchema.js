@@ -11,7 +11,11 @@ titulo:{
 grupo:{
     type:(mongoose.Schema.Types.ObjectId),
     ref:'grupo'
-},
+},codigo: {
+    type: String,
+    unique: true,    
+    required: true,  
+  },
 lanzamiento:{
 type:Date,
 },

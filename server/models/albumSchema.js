@@ -7,7 +7,11 @@ titulo:{
         type:String,
         required:true,
 },
-
+codigo: {
+    type: String,
+    unique: true,   
+    required: true,  
+  },
 grupo:{
     type:(mongoose.Schema.Types.ObjectId),
     ref:'grupo'

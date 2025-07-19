@@ -14,10 +14,11 @@ const getGrupo=async(req,res)=>{
 const crearGrupo=async(req,res)=>{
 
     try {
-        const {nombre,debut,empresa,generacion,concepto,descripcion,miembros,activo,subUnidades,fandom}=req.body
+        const {nombre,debut,codigo,empresa,generacion,concepto,descripcion,miembros,activo,subUnidades,fandom}=req.body
 
         const nuevoGrupo= new Grupo({
            nombre,
+           codigo,
            debut,
            empresa,
            generacion,

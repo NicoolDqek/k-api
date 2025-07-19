@@ -10,6 +10,11 @@ const empresaSchema= new mongoose.Schema({
         type:String,
         required:false
     },
+    codigo: {
+    type: String,
+    unique: true,    
+    required: true,  
+  },
     fundacion:{
         type:Date,
         required:false

@@ -13,10 +13,10 @@ const getIntegrante=async(req,res)=>{
 
 const crearIntegrante=async(req,res)=>{
     try {
-        const {nombre,nacimiento,nacionalidad,grupo,empresa,rol,edad,descripcion,activo,img_principal,img_gallery,subUnidad,fandom}=req.body
+        const {nombre,codigo,nacimiento,nacionalidad,grupo,empresa,rol,edad,descripcion,activo,img_principal,img_gallery,subUnidad,fandom}=req.body
         
 const nuevoIntegrante= new Integrante({
-    nombre,nacimiento,nacionalidad,grupo,empresa,rol,edad,descripcion,activo,img_principal,img_gallery,subUnidad,fandom
+    nombre,codigo,nacimiento,nacionalidad,grupo,empresa,rol,edad,descripcion,activo,img_principal,img_gallery,subUnidad,fandom
 })
 const guardar= await nuevoIntegrante.save()
 res.status(201).json(guardar)
