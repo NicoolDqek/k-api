@@ -1,0 +1,194 @@
+
+.page-d{
+    height: 100%;
+}
+.details{
+font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ .home{
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+ } 
+
+.d1{
+ 
+padding: 1rem;
+font-size: 20px;
+    
+    &:nth-child(2){
+        text-align: center;
+    }
+    &:nth-child(3){
+        text-align: end;
+    }
+}
+
+
+
+}
+
+.d2 {
+  padding: 2rem;
+ 
+
+
+  .card-d1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+  .over {
+  position: relative;
+  overflow: hidden;
+
+  &:hover .overlay {
+    left: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    left: -100%;
+    transition: left 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+}
+
+    
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 100px;
+      top:1%;
+      height: 280px;
+      left: 25%;
+      border-radius: 50%;
+      width:300px; 
+      background-color: black;
+      z-index: 0;  
+    }
+
+
+    .card-gallery{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem  0;
+        margin-top: 10px;
+        border-radius: 20px;
+        background-color: black;
+        img{
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: .4s ease-in-out;
+            margin: 0 3px;
+            
+            &:hover{
+                scale: 1.1;
+            }
+        }
+
+        .img-g{
+        padding: 0;
+        margin: 0;
+        }
+    }
+    img {
+      height: 300px;
+      width: 250px;
+      position: relative;
+      z-index: 1;  
+      border-radius: 10px;
+    }
+  }
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    
+    padding-left: 2rem;
+    letter-spacing: 2px;
+
+
+    span{
+
+        button{
+            border: none;
+            letter-spacing: 3px;
+            transition: .5s ease-in;
+            color: white;
+            padding: 7px;
+            margin: 3px;
+            border-radius: 10px;
+            background-color: black;
+            font-weight: 700;
+
+
+            &:hover{
+                color: black;
+                background-color: rgba(0, 0, 0, 0.374);
+            }
+        }
+    }
+}
+
+
+.related{
+
+display: flex;
+flex-direction: column;
+ padding: 1rem;
+ overflow: hidden;
+ min-height: 100px;
+
+ h4{
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-style: italic;
+ }
+    .r-card{
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+         
+
+        p{
+        text-align: center;
+        margin-top: 4px;
+        font-weight: 500;
+        letter-spacing: 2px;
+
+        }
+
+        img{
+        height:150px ;
+        width: 200px;
+        border-radius: 30px;
+        transition: .3s ease-in;
+        &:hover{
+            scale: 1.1;
+        }
+    }  
+    }
+
+    .link{
+        text-decoration: none;
+        color: black;
+    }
+  
+}
+
