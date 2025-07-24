@@ -14,7 +14,7 @@ const getGrupo=async(req,res)=>{
 const crearGrupo=async(req,res)=>{
 
     try {
-        const {nombre,debut,codigo,empresa,generacion,concepto,descripcion,miembros,activo,subUnidades,fandom}=req.body
+        const {nombre,debut,codigo,empresa,generacion,concepto,descripcion,miembros,activo,subUnidades,fandom,img_principal,img_gallery,video_gallery}=req.body
 
         const nuevoGrupo= new Grupo({
            nombre,
@@ -27,7 +27,10 @@ const crearGrupo=async(req,res)=>{
            miembros,
            activo,
            subUnidades,
-           fandom 
+           fandom,
+           img_principal,
+           img_gallery,
+           video_gallery
         })
 
         const guardar= await nuevoGrupo.save()
@@ -35,7 +38,7 @@ const crearGrupo=async(req,res)=>{
         res.status(201).json(guardar)
 
     } catch (error) {
-          res.status(500).json({ error: 'Error al crear grupo' })
+          res.status(500).json({ error: 'Error al crear grupo',error })
     }
 }
 

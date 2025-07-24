@@ -7,8 +7,10 @@ const  integranteRouter= require('./routes/integranteRouter');
 const  fandomRouter= require('./routes/fandomRouter'); 
 const  subUnidadRouter= require('./routes/subUnidadRouter'); 
 const  albumRouter= require('./routes/albumRouter'); 
+const cors = require('cors');
 const  cancionRouter= require('./routes/cancionRouter'); 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
  

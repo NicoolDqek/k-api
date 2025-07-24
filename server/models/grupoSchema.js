@@ -5,7 +5,7 @@ const { default: mongoose } = require("mongoose");
 const grupoSchema= new mongoose.Schema({
 nombre:{
         type:String,
-        required:true,
+        
 },
 debut:{
 type:Date
@@ -13,7 +13,7 @@ type:Date
 codigo: {
     type: String,
     unique: true,    
-    required: true,  
+      
   },
 empresa:{
 type:(mongoose.Schema.Types.ObjectId),
@@ -38,7 +38,7 @@ type:String,
 ],
 activo:{
 type:Boolean,
-required:true
+
 },
 subUnidades:[{
     type:(mongoose.Schema.Types.ObjectId),
@@ -47,8 +47,16 @@ subUnidades:[{
 }],
 fandom:{
     type:(mongoose.Schema.Types.ObjectId),
-    ref:'fandom'
-}
+    ref:'fandom',
+    required:false,
+    default: null,
+},
+img_principal:{
+    type:String,
+},
+img_galery:[String],
+video_galery:[String]
+
 
 });
 

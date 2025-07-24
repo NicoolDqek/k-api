@@ -28,4 +28,22 @@ const crearAlbum=async(req,res)=>{
 }
 
 
-module.exports={getAlbum,crearAlbum}
+const getAlbumByID=async(req,res)=>{
+    try {
+        const {id}=req.params
+        const album= await Album.findById(id)  
+         if (!album) {
+      return res.status(404).json({ message: "Álbum no encontrado" });
+    }
+        res.status(200).json(album)
+
+    } catch (error) {
+        res.status(500).json({
+        message:"error al utilizar getbyidalbum",
+        error:error.message
+        })
+    }
+}
+
+
+module.exports={getAlbum,crearAlbum,getAlbumByID}
