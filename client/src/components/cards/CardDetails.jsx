@@ -8,7 +8,7 @@ function CardDetails() {
     
      const [album, setAlbum] = useState(null);
      const [imgPrincipal, setImgPrincipal] = useState("");
-     const {albums}=useContext(ContextGlobal)
+     const {albums,idols,empresa,grupos}=useContext(ContextGlobal)
      const { id } = useParams(); 
 
 
@@ -21,7 +21,7 @@ useEffect(() => {
 
      useEffect(() => {
   getAlbumById(id)
-    .then(data => setAlbum(data))
+    .then(data => {setAlbum(data)})
     .catch(err => console.error(err));
 }, [id]);
 
@@ -29,11 +29,15 @@ const imgCambiar=(img)=>{
 setImgPrincipal(img)
 }
 
-const related = albums.filter(a => a.grupo._id === album.grupo._id && a.tipo === album.tipo && a._id !== album._id)
-console.log(related)
+  if (!album || !albums || albums.length === 0) {
+    return <div>Cargando...</div>;
+  }
 
-
-if (!album) return <div>Cargando...</div>;
+  const related = albums.filter(
+    a => a.grupo._id === album.grupo._id &&
+         a.tipo === album.tipo &&
+         a._id !== album._id
+  );
 
   return (
     <div className='container-fluid page-d'>
@@ -62,7 +66,7 @@ if (!album) return <div>Cargando...</div>;
              <div className="container card-gallery">
                 <div className="row">
                     {album.img_galery.map((img,index)=>(
-                         <div className='col img-g' key={index}>
+                         <div className='col img-g' key={img}>
                             <img onClick={()=>imgCambiar(img)} src={img} alt="" />
 
                          </div>

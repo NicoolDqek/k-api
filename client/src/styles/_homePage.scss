@@ -201,13 +201,15 @@ background-color: black;
         border-radius: 50%;
         transition:1s ease ;
         z-index: 99;
-        
-        &:hover{
-            border-radius: 20%;
-        }
+         transform-origin: center center;
+       
+        transition: 0.3s ease;
 
-        
-        
+        &:hover{
+           animation: girar 4s linear infinite;
+        }  
+
+         
     }
 
     .info_album{
@@ -292,7 +294,7 @@ h5{
 width: 100%;
 margin: 0;
   padding: 0;
-   display: block; /* 🔧 Elimina espacio blanco debajo de la imagen */
+   display: block;
   object-fit: cover;
   height: 70vh;
 filter: brightness(70%);
@@ -423,3 +425,13 @@ margin-top: 4rem;
         }
         
     }
+
+
+    @keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

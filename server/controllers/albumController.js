@@ -46,4 +46,25 @@ const getAlbumByID=async(req,res)=>{
 }
 
 
+const getfiltros=async(req,res)=>{
+    try {
+        const { grupo, tipo, generacion } = req.query;
+        const filtros={}
+
+    if (grupo) filtros.grupo=grupo
+    if(tipo) filtros.tipo=tipo
+    if (generacion) filtros.generacion = generacion;
+
+    const data = await Album.find(filtros).populate('grupo');
+
+    res.status(200).json(data);
+    } catch (error) {
+         res.status(500).json({
+        message:"error al utilizar getFiltros",
+        error:error.message
+        })
+    }
+}
+
+
 module.exports={getAlbum,crearAlbum,getAlbumByID}
