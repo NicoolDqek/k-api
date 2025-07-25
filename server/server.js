@@ -7,8 +7,8 @@ const  integranteRouter= require('./routes/integranteRouter');
 const  fandomRouter= require('./routes/fandomRouter'); 
 const  subUnidadRouter= require('./routes/subUnidadRouter'); 
 const  albumRouter= require('./routes/albumRouter'); 
-const cors = require('cors');
 const  cancionRouter= require('./routes/cancionRouter'); 
+const cors = require('cors');
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3000;
@@ -24,7 +24,9 @@ app.use('/fandom',fandomRouter)
 app.use('/subUnidad',subUnidadRouter)
 app.use('/album',albumRouter)
 app.use('/cancion',cancionRouter)
-app.get('/', (req, res) => {
+
+
+app.get('/', (res) => {
   res.send('API KPOP funcionando 🎤');
 });
 

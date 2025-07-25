@@ -1,0 +1,52 @@
+.all{
+overflow: hidden;
+background-color: black;
+
+.right {
+    overflow: scroll;
+    padding: 0;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+   
+
+   .card{
+
+
+   .card-img{
+           height: 300px;           
+           object-fit: cover;
+           
+        } 
+}
+
+}
+
+
+.result{
+    height: 40vh;
+    color: white;
+    text-align: center;
+    background-color: black;
+    
+    h4{
+        font-size: 35px;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-style: italic;
+        text-transform: uppercase;
+        border-bottom: 1px solid white;
+        padding-bottom: 1rem;
+        
+    }
+
+   .card_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+   
+   }
+}
