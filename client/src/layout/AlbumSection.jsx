@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardAlbum from '../components/cards/CardAlbum'
-import GroupSection from './groupSection'
+import GroupSection from './GroupSection'
 import {  getData } from '../controllers/axios/services'
 
 function AlbumSection() {
