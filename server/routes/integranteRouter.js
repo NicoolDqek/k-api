@@ -5,6 +5,6 @@ const router=express.Router()
 
 router.get('/',getIntegrante)
 router.post('/',crearIntegrante)
-router.post('/:id',getIntegranteByID)
+router.get('/:id',getIntegranteByID)
 
 module.exports=router
