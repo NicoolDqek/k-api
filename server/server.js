@@ -26,7 +26,7 @@ app.use('/album',albumRouter)
 app.use('/cancion',cancionRouter)
 
 
-app.get('/', (res) => {
+app.get('/', (req,res) => {
   res.send('API KPOP funcionando 🎤');
 });
 
