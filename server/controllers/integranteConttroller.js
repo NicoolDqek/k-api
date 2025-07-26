@@ -25,4 +25,22 @@ res.status(201).json(guardar)
     }
 }
 
-module.exports={getIntegrante,crearIntegrante}
+
+const getIntegranteByID=async(req,res)=>{
+    try {
+        const {id}=req.params
+        const integrante= await Integrante.findById(id).populate('grupo').populate('empresa')
+         if (!integrante) {
+      return res.status(404).json({ message: "integrante no encontrado" });
+    }
+        res.status(200).json(integrante)
+
+    } catch (error) {
+        res.status(500).json({
+        message:"error al utilizar getbyidIntegrante",
+        error:error.message
+        })
+    }
+}
+
+module.exports={getIntegrante,crearIntegrante,getIntegrante}
