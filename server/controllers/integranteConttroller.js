@@ -43,4 +43,4 @@ const getIntegranteByID=async(req,res)=>{
     }
 }
 
-module.exports={getIntegrante,crearIntegrante,getIntegrante}
+module.exports={getIntegrante,crearIntegrante,getIntegranteByID}
