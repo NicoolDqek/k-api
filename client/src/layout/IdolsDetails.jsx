@@ -4,15 +4,28 @@ import { ContextGlobal } from '../context/GlobalContext'
 import { getIntegranteById } from '../controllers/axios/services'
 
 function IdolsDetails() {
-  const [idol,setIdol]=useState([])
+  const [idol,setIdol]=useState(null)
+  const [img_principal,setImgPrincipal]=useState(null)
   const {idols}=useContext(ContextGlobal)
   const {id}=useParams()
 
 useEffect(() => {
 getIntegranteById(id)
 .then(data=>setIdol(data))
-.catch(err=>console.error('error al cargar artista'))
+.catch(err=>console.error('error al cargar artista',err))
 }, [])
+
+useEffect(() => {
+  if (idol?.img_principal) {
+    setImgPrincipal(idol.img_principal);
+  }
+}, [idol]);
+
+const cambioImg=(img)=>{
+setImgPrincipal(img)
+}
+
+if (!idol) return <p>Idol no encontrado.</p>;
 
   return (
     <div className='container-fluid idols'>
@@ -31,29 +44,29 @@ getIntegranteById(id)
        
        <div className="col-lg-4 col-md-4 col-sm-12 menber">
         <div>
-          <h2>Felix</h2>
+          <h2>{idol.nombre}</h2>
           <div className='gm'>
             <div className='I-gallery'>
-             <img src="https://hitmagazine.com.br/wp-content/uploads/2024/12/felix-e1734535061606-736x540.jpg" alt="" />
-             <img src="https://hitmagazine.com.br/wp-content/uploads/2024/12/felix-e1734535061606-736x540.jpg" alt="" />
-             <img src="https://hitmagazine.com.br/wp-content/uploads/2024/12/felix-e1734535061606-736x540.jpg" alt="" />
-
+              {idol.img_gallery.map(img=>(
+                <img onClick={()=>cambioImg(img)} src={img}  alt="" />
+              ))}
             </div>
             <div className='I-img'>
-             <img src="https://hitmagazine.com.br/wp-content/uploads/2024/12/felix-e1734535061606-736x540.jpg" alt="" />
+             <img  src={img_principal} alt="" />
             </div>
             
           </div>
 
           <div className='info-idol'>
-            <p><b>Nacimiento:</b> 2000-15-10</p>
-            <p><b>Edad:</b> 24</p>
-            <p><b>grupo: </b>Stray Kids</p>
-            <p><b>rol:</b> Rapero-Bailarin-cara del grupo</p>
+            <p><b>Nacimiento: </b> {idol?.nacimiento?.slice(0,10)}</p>
+            <p><b>Edad: </b>{idol.edad}</p>
+            <p><b>grupo: </b>{idol.grupo.nombre}</p>
+            <p><b>rol: </b>{idol.rol.join(', ')}</p>
             <div className='menber-des'>
               <h5><b>Descripcion</b></h5>
-               <p>Felix (필릭스) es un idol australiano de Stray Kids, conocido por su voz profunda y habilidades de baile.</p>
-               <h5><b>Activo:</b>true</h5>
+               <p>{idol.descripcion}</p>
+               <h5><b>Activo: </b>{idol.activo === true? "Se encuentra Activo":"Se encuentra Inactivo"}</h5>
+
             </div>
            
 
@@ -111,8 +124,8 @@ getIntegranteById(id)
        </div>
        <div className="col-lg-3 col-md-4 col-sm-12 empresa">
         <h3>Empresa</h3>
-        <img src="https://mindtrip.ai/cdn-cgi/image/w=1200,format=webp,h=1200,fit=cover/https://iorigin.mindtrip.ai/attractions/a361/46a2/be5b/ef40/7e9a/71c2/b847/909b" alt="" />
-        <h4>JYP Entretaiment</h4>
+        <img className='w-100' src={idol.empresa.img_principal} alt="" />
+        <h4>{idol.empresa.nombre}</h4>
 
        </div>
       </div>

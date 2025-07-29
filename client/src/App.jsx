@@ -15,7 +15,7 @@ function App() {
         <Route path='/all' element={<AllPage />} />
         <Route path='/album/:id' element={<PageDetails />} />
         <Route path='/grupo/:id' element={<CardDetailsGroups />} />
-        <Route path='/idol' element={<IdolsDetsilsPage />} />
+        <Route path='/integrante/:id' element={<IdolsDetsilsPage />} />
         <Route path='/result' element={<ResultPage/>} />
       </Routes>
     </>

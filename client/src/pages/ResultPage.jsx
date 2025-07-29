@@ -19,7 +19,7 @@ function ResultPage() {
         {result.albums?.length > 0 ? (
           <div className="row section_albums">
             {result.albums.map((album) => (
-              <CardAlbum key={album._id} album={album} />
+              <CardAlbum key={album._id} album={{ ...album, p: 'album' }} />
             ))}
           </div>
         ) : (
@@ -32,7 +32,7 @@ function ResultPage() {
         {result.idols?.length > 0 ? (
           <div className="row section_albums">
             {result.idols.map((idol) => (
-              <CardAlbum key={idol._id} album={idol} />
+              <CardAlbum key={idol._id}album={{ ...idol, p: 'integrante' }}  />
             ))}
           </div>
         ) : (

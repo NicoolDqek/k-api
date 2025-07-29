@@ -98,7 +98,7 @@ setImgPrincipal(img)
             <div className="container">
 
                {related.slice(0,2).map(r=>(
-                <Link to={`/details/${r._id}`} className='link'>
+                <Link to={`/album/${r._id}`} className='link'>
                     <div key={r._id} className='row r-card'> 
                    <img src={r.img_principal} alt="" />
                    <p>{r.titulo}</p>

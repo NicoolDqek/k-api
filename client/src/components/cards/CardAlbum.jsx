@@ -15,7 +15,7 @@ function CardAlbum({album}) {
       <p>{album.descripcion ? album.descripcion.slice(0, 60) : album.sede}</p>
       <h6>{album.concepto}</h6>
        <h6>{album.tipo}</h6>
-       <Link to={`/album/${album._id} `}><button> more Info </button></Link>
+       <Link to={`/${album.p}/${album._id}`}><button> more Info </button></Link>
      </div>
         
     </div>

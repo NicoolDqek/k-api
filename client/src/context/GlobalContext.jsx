@@ -19,6 +19,8 @@ function GlobalContext({children}) {
 
 
 const search=async(valor)=>{
+
+  
     try {
       const { data } = await UrlBase.get(`/search?q=${valor}`);
     setResult(data);

@@ -7,14 +7,13 @@ import UrlBase from './UrlBase.js';
 export const getData=async(ruta)=>{
 try {
     const res= await UrlBase.get(`/${ruta}`)
-    return res.data
+    const modelo= res.data.map((prev)=>({...prev,p:ruta}))
+    return modelo
 } catch (error) {
-    console.error('error al traer la data de albums',error)
+    console.error('error al traer la data',error)
     throw Error
 }
 }
-
-
 
 
 
