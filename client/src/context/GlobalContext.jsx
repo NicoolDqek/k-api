@@ -20,7 +20,7 @@ function GlobalContext({children}) {
 
 const search=async(valor)=>{
     try {
-      const { data } = await axios.get(`/search?q=${valor}`);
+      const { data } = await UrlBase.get(`/search?q=${valor}`);
     setResult(data);
     } catch (error) {
         console.error('error al hacer busqueda',error)
