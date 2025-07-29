@@ -5,7 +5,7 @@ import PageDetails from './pages/PageDetails';
 import AllPage from './pages/AllPage';
 import CardDetailsGroups from './components/cards/CardDetailsGroups';
 import IdolsDetsilsPage from './pages/IdolsDetsilsPage';
-
+import ResultPage from './pages/ResultPage'
 function App() {
   return (
     <>
@@ -16,6 +16,7 @@ function App() {
         <Route path='/album/:id' element={<PageDetails />} />
         <Route path='/grupo/:id' element={<CardDetailsGroups />} />
         <Route path='/idol' element={<IdolsDetsilsPage />} />
+        <Route path='/result' element={<ResultPage/>} />
       </Routes>
     </>
   );

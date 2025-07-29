@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { getData } from '../controllers/axios/services'
+import UrlBase from '../controllers/axios/UrlBase'
+import { Navigate } from 'react-router-dom'
+import axios from 'axios'
 
 
 
@@ -11,8 +14,19 @@ function GlobalContext({children}) {
     const [idols,setIdols]=useState([])
     const [grupos,setGrupos]=useState([])
     const [empresa,setEmpresa]=useState([])
+    const [input,setInput]=useState("")
+    const [result,setResult]=useState([])
 
 
+const search=async(valor)=>{
+    try {
+      const { data } = await axios.get(`http://localhost:3000/search?q=${valor}`);
+    setResult(data);
+    } catch (error) {
+        console.error('error al hacer busqueda',error)
+    throw new Error('Error al buscar');
+    }
+}
 
     useEffect(() => {
     getData('album')
@@ -38,8 +52,15 @@ function GlobalContext({children}) {
     .catch(err=>console.log("error al trae empresas",err))
     }, [empresa])
 
+
+
+const inputValor=(e)=>{
+     const valor=e.target.value 
+     setInput(valor)
+}
+
   return (
-    <ContextGlobal.Provider value={{albums,idols,empresa,grupos}}>
+    <ContextGlobal.Provider value={{albums,idols,empresa,grupos,input,result,inputValor,search}}>
       {children}
     </ContextGlobal.Provider>
   )

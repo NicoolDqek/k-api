@@ -1,7 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ContextGlobal } from '../context/GlobalContext'
 
 function Navbar() {
+
+ const { input, inputValor, search } = useContext(ContextGlobal);
+  const navigate = useNavigate();
+
+  const formValor = async (e) => {
+    e.preventDefault();
+    if (input.trim() !== "") {
+      await search(input);
+      navigate(`/result?q=${input}`);
+    }
+  };
   return (
     <div>
       <nav className="navbar bg-black navbar-expand-lg border-bottom border-body" >
@@ -33,8 +46,8 @@ function Navbar() {
           <a className="nav-link " aria-disabled="true">Gallery</a>
         </li>
       </ul>
-      <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search"/>
+      <form onSubmit={formValor}  className="d-flex" role="search">
+        <input value={input} onChange={(e)=>inputValor(e)} className="form-control me-2" type="search" placeholder="Search..." aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>

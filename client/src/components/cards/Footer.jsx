@@ -31,9 +31,9 @@ function Footer() {
         <div className="col-lg-6 col-md-3 col-sm-12  redes ">
         <ul>
           <li><b>Redes:</b></li>
-          <i class="bi bi-github"></i>
-          <i class="bi bi-envelope-at-fill"></i>
-          <i class="bi bi-linkedin"></i>
+          <i className="bi bi-github"></i>
+          <i className="bi bi-envelope-at-fill"></i>
+          <i className="bi bi-linkedin"></i>
         </ul>
         </div>
         

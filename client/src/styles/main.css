@@ -714,4 +714,41 @@
   scale: 1.1;
   border-radius: 20px;
   margin: 10px 0;
+}
+
+.resultados {
+  background-color: black;
+}
+.resultados h2 {
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 5px;
+  font-size: 45px;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+}
+.resultados h3 {
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 5px;
+  font-size: 25px;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  padding-top: 3rem;
+}
+
+.none {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+.none img {
+  height: 150px;
+}
+.none p {
+  color: white;
+  padding: 1rem;
 }/*# sourceMappingURL=main.css.map */
