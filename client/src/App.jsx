@@ -4,7 +4,7 @@ import GroupPage from './pages/GroupPage';
 import PageDetails from './pages/PageDetails';
 import AllPage from './pages/AllPage';
 import CardDetailsGroups from './components/cards/CardDetailsGroups';
-import IdolsDetsilsPage from './pages/IdolsDetailsPage';
+import IdolsDetsilsPage from './pages/IdolsDetsilsPage';
 import ResultPage from './pages/ResultPage'
 function App() {
   return (
