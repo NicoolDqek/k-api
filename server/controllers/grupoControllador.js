@@ -4,7 +4,7 @@ const Grupo = require("../models/grupoSchema")
 
 const getGrupo=async(req,res)=>{
     try {
-        const grupo = await Grupo.find().populate('fandom').populate('empresa')
+        const grupo = await Grupo.find().populate('fandom').populate('empresa').populate('miembros')
         res.status(200).json(grupo)
     } catch (error) {
          res.status(500).json({ error: 'Error al obtener grupos' })
@@ -45,7 +45,7 @@ const crearGrupo=async(req,res)=>{
 const getGrupoByID=async(req,res)=>{
     try {
         const {id}=req.params
-        const grupo= await Grupo.findById(id).populate('fandom').populate('empresa')
+        const grupo= await Grupo.findById(id).populate('fandom').populate('empresa').populate('miembros')
          if (!grupo) {
       return res.status(404).json({ message: "grupo no encontrado" });
     }

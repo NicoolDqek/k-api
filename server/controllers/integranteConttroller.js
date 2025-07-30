@@ -29,7 +29,12 @@ res.status(201).json(guardar)
 const getIntegranteByID=async(req,res)=>{
     try {
         const {id}=req.params
-        const integrante= await Integrante.findById(id).populate('grupo').populate('empresa')
+        const integrante= await Integrante.findById(id).populate({
+    path: 'grupo',
+    populate: {
+      path: 'miembros'
+    }
+  }).populate('empresa') 
          if (!integrante) {
       return res.status(404).json({ message: "integrante no encontrado" });
     }

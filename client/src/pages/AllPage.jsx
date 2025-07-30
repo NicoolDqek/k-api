@@ -35,20 +35,12 @@ function AllPage() {
         <div className="col-lg-10 right ">
           <div className="card">
             <img
-              src="https://images.pexels.com/photos/29912748/pexels-photo-29912748.jpeg"
+              src="https://wallpapercave.com/wp/wp15515625.jpg"
               className="card-img"
               alt="K-pop"
               
             />
-            <div className="card-img-overlay">
-              <h5 className="card-title">Última noticia</h5>
-              <p className="card-text">
-                Esta es una tarjeta de ejemplo que podría contener una noticia, anuncio o lanzamiento reciente.
-              </p>
-              <p className="card-text">
-                <small>Actualizado hace 3 minutos</small>
-              </p>
-            </div>
+            
           </div>
           <Navbar/>
           <div className="mt-4 result">
