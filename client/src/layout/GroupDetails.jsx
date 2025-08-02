@@ -16,12 +16,14 @@ function GroupDetails() {
         console.log(data)})
     .catch(err=> console.error('error al traer grupo',err))
     }, [grupo])
+ if(!grupo)  return <p>'cargando informacion del grupo'</p>
+
 
     const relacionados=grupos.filter(g=> g.empresa.nombre === grupo.empresa.nombre && g._id !== grupo._id)
 
-    console.log(relacionados)
     
-    if(!grupo)  return <p>'cargando informacion del grupo'</p>
+    
+   
 
   return (
     <>
