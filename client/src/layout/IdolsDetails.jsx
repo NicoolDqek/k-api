@@ -63,7 +63,7 @@ if (!idol) return <p>Idol no encontrado.</p>;
           <div className='info-idol'>
             <p><b>Nacimiento: </b> {idol?.nacimiento?.slice(0,10)}</p>
             <p><b>Edad: </b>{idol.edad}</p>
-            <p><b>grupo: </b>{idol.grupo.nombre}</p>
+          <p><b>grupo: </b><Link to={`/grupo/${idol.grupo._id}`}>{idol.grupo.nombre}</Link>  </p>
             <p><b>rol: </b>{idol.rol.join(', ')}</p>
             <div className='menber-des'>
               <h5><b>Descripcion</b></h5>

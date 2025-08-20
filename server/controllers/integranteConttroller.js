@@ -1,4 +1,5 @@
 const Integrante = require("../models/integranteSchema")
+const Empresa = require("../models/empresaSchema")
 
 
 const getIntegrante=async(req,res)=>{
@@ -42,10 +43,45 @@ const getIntegranteByID=async(req,res)=>{
 
     } catch (error) {
         res.status(500).json({
-        message:"error al utilizar getbyidIntegrante",
+        message:"error al utilizar getbyidIntegranteID",
         error:error.message
         })
     }
 }
 
-module.exports={getIntegrante,crearIntegrante,getIntegranteByID}
+
+
+
+const filtrosIntegrante=async(req,res)=>{
+
+    const {empresa,generacion}=req.query
+    const queries= {}
+
+    try {
+       
+       
+    if(empresa) {
+        const isObjectId= /^[a-f\d]{24}$/i.test(empresa);
+
+        if(isObjectId){
+          queries.empresa = empresa
+        }else{
+            const em = await Empresa.findOne({nombre:empresa.trim()})
+            if (em) queries.empresa= em._id
+        }
+    }
+
+    if(generacion) queries.generacion= Number(generacion)
+
+    const resultado = await Integrante.find(queries).populate('empresa','nombre')
+        res.status(200).json(resultado )
+
+    } catch (error) {
+        res.status(500).json({
+        message:"error al utilizar filtros de INtegrante",
+        error:error.message
+        })
+    }
+}
+
+module.exports={getIntegrante,crearIntegrante,getIntegranteByID,filtrosIntegrante}

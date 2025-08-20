@@ -50,3 +50,49 @@ background-color: black;
    
    }
 }
+
+
+.filtros{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border: 1px solid white;
+    border-top: none;
+    border-radius: 10px;
+    padding: 10px;
+.fill{
+    margin-left: 10px;
+
+}
+    select{
+        padding: 5px;
+        margin: 5px;
+        color: aliceblue;
+        background-color: rgba(240, 248, 255, 0.235);
+        font-weight: 600;
+        letter-spacing: 4px;
+        border-radius: 10px;
+
+    }
+
+    i{
+        font-size: 20px;
+        margin: 3px;
+
+        
+    }
+
+    .sort{
+        margin-right: 20px;
+    }
+    option{
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: black;
+    font-style: italic;
+    
+   
+
+
+    }
+}

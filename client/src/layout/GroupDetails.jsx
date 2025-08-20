@@ -7,6 +7,7 @@ import { ContextGlobal } from '../context/GlobalContext'
 function GroupDetails() {
     const [grupo,setgrupo]=useState(null)
     const {grupos}=useContext(ContextGlobal)
+    const [imgActual,setImgActual]=useState(null)
     const [related,setRelated]=useState([])
     const {id}=useParams()
 
@@ -15,14 +16,16 @@ function GroupDetails() {
     .then(data=> {setgrupo(data)
         console.log(data)})
     .catch(err=> console.error('error al traer grupo',err))
-    }, [grupo])
+    }, [id])
  if(!grupo)  return <p>'cargando informacion del grupo'</p>
 
 
     const relacionados=grupos.filter(g=> g.empresa.nombre === grupo.empresa.nombre && g._id !== grupo._id)
 
     
-    
+    const cambiarImg=(img)=>{
+      setImgActual(img)
+    }
    
 
   return (
@@ -42,20 +45,20 @@ function GroupDetails() {
           <div className="col-lg-6 grupo-gallery p-0">
             <div className="img-group p-3">
               <div className="image">
-                <img src={grupo.img_principal} alt="" />
+                <img src={imgActual== null ?  grupo.img_principal : imgActual } alt="" />
               </div>
               <div className="menbers w-50 m-2">
                 <p>Miembros</p>
                 {grupo.miembros.map(m=>(
                     
-                    <Link to={`/integrante/${m._id}`}><img key={m._id} src={m.img_principal} alt=""/></Link>
+                    <Link  to={`/integrante/${m._id}`}><img  key={m._id} src={m.img_principal} alt=""/></Link>
                 ))}
               </div>
             </div>
 
             <div className="g-group">
               {grupo.img_galery?.map((img,index)=>(
-                <img key={index} src={img} alt="" />
+                <img onClick={()=>cambiarImg(img)} key={index} src={img} alt="" />
               ))}
             </div>
           </div>
@@ -75,6 +78,7 @@ function GroupDetails() {
                 <tr><th scope="row">Empresa</th><td>{grupo.empresa.nombre}</td></tr>
                 <tr><th scope="row">Concepto</th><td>{grupo.concepto}</td></tr>
                 <tr><th scope="row">Miembros</th><td></td></tr>
+                <tr><th scope="row">Fandom</th><td>{grupo.fandom?.nombre}</td></tr>
                 <tr><th scope="row">Generación</th><td>{grupo.generacion}</td></tr>
                 <tr><th scope="row">Status</th><td>{grupo.activo === true ? 'Grupo Activo':'Grupo Inactivo'}</td></tr>
               </tbody>

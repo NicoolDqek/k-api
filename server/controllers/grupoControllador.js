@@ -1,4 +1,5 @@
 const Grupo = require("../models/grupoSchema")
+const Empresa = require("../models/empresaSchema")
 
 
 
@@ -59,4 +60,37 @@ const getGrupoByID=async(req,res)=>{
     }
 }
 
-module.exports={getGrupo,crearGrupo,getGrupoByID}
+
+
+
+const grupoFilter = async (req, res) => {
+    const { empresa, generacion } = req.query;
+    const queries = {};
+
+    try {
+        if (empresa) {
+            const isObjectId = /^[a-f\d]{24}$/i.test(empresa);
+
+            if (isObjectId) {
+                queries.empresa = empresa;
+            } else {
+        const em = await Empresa.findOne({ nombre: empresa.trim() });
+                if (!em) return res.status(404).json({ message: "Empresa no encontrada",em});
+                queries.empresa = em._id;
+            }
+        }
+
+        if (generacion) queries.generacion = Number(generacion);
+
+        const resultado = await Grupo.find(queries).populate('empresa', 'nombre');
+        res.status(200).json(resultado);
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Error al utilizar filtros de grupo",
+            error: error.message
+        });
+    }
+};
+
+module.exports={getGrupo,crearGrupo,getGrupoByID,grupoFilter}

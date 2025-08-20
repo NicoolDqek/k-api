@@ -13,10 +13,10 @@ function GlobalContext({children}) {
     const [albums,setAlbums]=useState([])
     const [idols,setIdols]=useState([])
     const [grupos,setGrupos]=useState([])
-    const [empresa,setEmpresa]=useState([])
+    const [empresas,setEmpresa]=useState([])
     const [input,setInput]=useState("")
     const [result,setResult]=useState([])
-
+     
 
 const search=async(valor)=>{
 
@@ -52,7 +52,7 @@ const search=async(valor)=>{
     getData('empresa')
     .then(data=>setEmpresa(data))
     .catch(err=>console.log("error al trae empresas",err))
-    }, [empresa])
+    }, [empresas])
 
 
 
@@ -61,8 +61,10 @@ const inputValor=(e)=>{
      setInput(valor)
 }
 
+
+
   return (
-    <ContextGlobal.Provider value={{albums,idols,empresa,grupos,input,result,inputValor,search}}>
+    <ContextGlobal.Provider value={{albums,idols,empresas,grupos,input,result,inputValor,search}}>
       {children}
     </ContextGlobal.Provider>
   )

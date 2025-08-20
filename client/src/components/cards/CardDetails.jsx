@@ -8,7 +8,7 @@ function CardDetails() {
     
      const [album, setAlbum] = useState(null);
      const [imgPrincipal, setImgPrincipal] = useState("");
-     const {albums,idols,empresa,grupos}=useContext(ContextGlobal)
+     const {albums}=useContext(ContextGlobal)
      const { id } = useParams(); 
 
 
@@ -37,7 +37,10 @@ setImgPrincipal(img)
     a => a.grupo._id === album.grupo._id &&
          a.tipo === album.tipo &&
          a._id !== album._id
+
   );
+
+ 
 
   return (
     <div className='container-fluid page-d'>
@@ -89,7 +92,7 @@ setImgPrincipal(img)
 
           <span>
             <button>Canciones</button>
-            <button>Grupo</button>
+            <button><Link className='link-grupo' to={`/grupo/${album.grupo._id}`}>Grupo</Link> </button>
           </span>
 
         </div>
@@ -98,7 +101,7 @@ setImgPrincipal(img)
             <div className="container">
 
                {related.slice(0,2).map(r=>(
-                <Link to={`/album/${r._id}`} className='link'>
+                <Link  to={`/album/${r._id}`} className='link'>
                     <div key={r._id} className='row r-card'> 
                    <img src={r.img_principal} alt="" />
                    <p>{r.titulo}</p>
