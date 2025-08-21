@@ -1,5 +1,6 @@
 const Integrante = require("../models/integranteSchema")
 const Empresa = require("../models/empresaSchema")
+const Grupo = require("../models/grupoSchema")
 
 
 const getIntegrante=async(req,res)=>{
@@ -54,11 +55,17 @@ const getIntegranteByID=async(req,res)=>{
 
 const filtrosIntegrante=async(req,res)=>{
 
-    const {empresa,generacion}=req.query
+    let {empresa,rol}=req.query
     const queries= {}
 
     try {
-       
+            if (rol && !Array.isArray(rol)) {
+  rol = [rol];
+}
+
+if (rol && rol.length > 0) {
+  queries.rol = { $in: rol };
+}
        
     if(empresa) {
         const isObjectId= /^[a-f\d]{24}$/i.test(empresa);
@@ -71,14 +78,12 @@ const filtrosIntegrante=async(req,res)=>{
         }
     }
 
-    if(generacion) queries.generacion= Number(generacion)
-
     const resultado = await Integrante.find(queries).populate('empresa','nombre')
         res.status(200).json(resultado )
 
     } catch (error) {
         res.status(500).json({
-        message:"error al utilizar filtros de INtegrante",
+        message:"error al utilizar filtros de Integrante",
         error:error.message
         })
     }
