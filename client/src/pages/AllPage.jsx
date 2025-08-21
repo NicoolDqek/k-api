@@ -18,8 +18,10 @@ function AllPage() {
     const [sortBy,setSort]=useState("")
     const [grupo,setGrupo]=useState("")
     const [concepto,setConcepto]=useState("")
+    const [rol,setRol]=useState("")
+    const [selectedFilter, setSelectedFilter] = useState("");
     const [filters, setFilters] = useState([]);
-    const [generacion, setGeneracion] = useState([]);
+    const [generacion, setGeneracion] = useState("");
      
 
 
@@ -36,9 +38,10 @@ useEffect(() => {
       } else if (valor === 'grupos') {
         data = await filtrosGrupos({ empresa, generacion });
       } else if (valor === 'artistas') {
-        data = await filtrosIdols({ empresa, generacion });
+        
+console.log("Endpoint filtrosIdols params:", { empresa, rol });
+        data = await filtrosIdols({ empresa, rol });
       }
-
       setFilters(data);
     } catch (error) {
       console.error(error);
@@ -46,7 +49,7 @@ useEffect(() => {
   };
 
   fetchData();
-}, [valor, grupo, concepto, sortBy, empresa, generacion]);
+}, [valor, grupo, concepto, sortBy, empresa, generacion,rol]);
 
     const render=(valor,value)=>{
     setValue(valor)
@@ -58,7 +61,7 @@ useEffect(() => {
 
     const generaciones= [...new Set(grupos.map(g=> g.generacion)) ]
     const conceptos= [...new Set(albums.map(g=> g.concepto )) ]
-
+    const roles= [...new Set(idols.flatMap(integrante =>integrante.rol ))]
   return (
     <div className='container-fluid all'>
     
@@ -88,7 +91,7 @@ useEffect(() => {
           <div className="mt-4 result">
             <h4>{valor? valor:"ALBUMS"}</h4>
             <div>
-               {valor !== 'albums' && valor !== 'empresas' && value !== albums ?(<div className='filtros'>
+               {valor !== 'albums' && valor !== 'empresas' ?(<div className='filtros'>
                 <div className='fill'>
                   <select value={empresa} onChange={(e)=>setEmpresa(e.target.value)} name="" id="">
                 <option value="">Empresa</option>
@@ -97,11 +100,30 @@ useEffect(() => {
                 ))}
 
               </select>
-              <select  value={generacion} onChange={(e)=>setGeneracion(e.target.value)} name="" id="">
-                <option value="">Generacion</option>
-                {generaciones.map((g,i)=>(
-                  <option key={i} value={g}>{g}</option>
-                ))}
+              <select value={selectedFilter}
+  onChange={(e) => {
+    const newValue = e.target.value;
+    setSelectedFilter(newValue);
+
+    if (valor === "grupos") {
+      setGeneracion(newValue);
+      setRol(""); 
+    } else if (valor === "artistas") {
+      setRol(newValue);
+      setGeneracion(""); 
+    }
+    return console.log(newValue)
+  }}   name="" id="">
+                <option value="">{valor === 'artistas' ? 'Roles' :'Generacion'} </option>
+               {valor === 'grupos'
+  ? generaciones.map((g,i)=>(
+      <option key={i} value={g}>{g}</option>
+    ))
+  : roles.map((r,i)=>(
+      <option key={i} value={r}>{r}</option>
+    ))
+}
+  
                 
               </select>
                 </div>
