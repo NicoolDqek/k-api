@@ -87,17 +87,16 @@ export const filtrosGrupos= async ({ empresa,generacion }) => {
 };
 
 
-export const filtrosIdols= async ({ empresa,generacion }) => {
+export const filtrosIdols= async ({ empresa,rol }) => {
   try {
     const params = {};
      
    if (empresa) params.empresa = empresa;
-    if (generacion) params.generacion = generacion;
+    if (rol) params.rol = rol;
      
 
     const res = await UrlBase.get('/integrante/filtros', { params});
     const modelo= res.data.map((prev)=>({...prev,p:'integrante'}))
-
     return modelo;
   } catch (error) {
     console.error('Error en filtrosGrupo', error);
