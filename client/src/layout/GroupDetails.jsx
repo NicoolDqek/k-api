@@ -85,28 +85,44 @@ function GroupDetails() {
             </table>
           </div>
         </div>
-        <h3 className='fandom-title'>Fandom</h3>
+        
+       {grupo.fandom && <h3 className='fandom-title text-center'>Fandom</h3>}
+        {grupo.fandom && (
+          
         <div className="fandom row">
-         <div className="col-lg-5 col-md-6 col-sm-12 left">
+         <div className="col-lg-6 col-md-7 col-sm-12 left">
           <div className="div1">
-            
+            <h4>Debut</h4>
+            <h5>{grupo.fandom?.creacion.slice(0,10)}</h5>
           </div>
           <div className="div2">
-            <h3>{grupo.fandom.nombre}</h3>
-            <p>{grupo.fandom.lema}</p>
+            <h3>{grupo.fandom?.nombre}</h3>
+            <p>{grupo.fandom?.lema}</p>
           </div>
           <div className="div3">
-            <img src={grupo.fandom.lightStick_img} alt="" />
-          </div>
-          <div className="div4"></div>
-          <div className="div5"></div>
-          <div className="div6"></div>
-         </div>
-         <div className="col-lg-7 col-md-6 col-sm-12 right">
+            <h5>lightStick:<br></br>{grupo.fandom?.lightStick}</h5>
 
+            <img src={grupo.fandom?.lightStick_img[1]} alt="" />
+          
+
+          </div>
+          <div className="div4">
+            <h3>Descripcion:</h3>
+            <p>{grupo.fandom?.descripcion}</p>
+          </div>
+          <div className="div5">
+            <img src={grupo.fandom?.img_principal} alt="" />
+
+          </div>
+         </div>
+         <div className="col-lg-6 col-md-5 col-sm-12 right">
+          <div className="div1">
+            <img src={grupo.fandom?.img_galery[2]} alt="" />
+          </div>
+          
          </div>
         </div>
-        
+        )}
         <div className="related mt-5 mb-0">
           <div className="row">
             <div className="col-12">
