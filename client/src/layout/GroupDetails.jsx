@@ -85,7 +85,27 @@ function GroupDetails() {
             </table>
           </div>
         </div>
+        <h3 className='fandom-title'>Fandom</h3>
+        <div className="fandom row">
+         <div className="col-lg-5 col-md-6 col-sm-12 left">
+          <div className="div1">
+            
+          </div>
+          <div className="div2">
+            <h3>{grupo.fandom.nombre}</h3>
+            <p>{grupo.fandom.lema}</p>
+          </div>
+          <div className="div3">
+            <img src={grupo.fandom.lightStick_img} alt="" />
+          </div>
+          <div className="div4"></div>
+          <div className="div5"></div>
+          <div className="div6"></div>
+         </div>
+         <div className="col-lg-7 col-md-6 col-sm-12 right">
 
+         </div>
+        </div>
         
         <div className="related mt-5 mb-0">
           <div className="row">

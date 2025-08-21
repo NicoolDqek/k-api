@@ -939,4 +939,54 @@
   min-height: 40vh;
   background-size: contain;
   background-position: center;
+}
+
+.fandom-title {
+  margin-top: 3rem;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 4px;
+}
+
+.fandom {
+  height: 30vh;
+  margin-top: 3rem;
+}
+.fandom .left {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+  padding: 0;
+}
+.fandom .left .div1 {
+  grid-area: 1/3/2/4;
+  background-color: blueviolet;
+}
+.fandom .left .div2 {
+  grid-area: 1/1/2/3;
+  background-color: bisque;
+}
+.fandom .left .div3 {
+  grid-area: 2/1/4/2;
+  background-color: cadetblue;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.fandom .left .div3 img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.fandom .left .div4 {
+  grid-area: 3/2/4/4;
+  background-color: yellow;
+}
+.fandom .left .div5 {
+  grid-area: 2/2/3/4;
+  background-color: yellowgreen;
+}
+.fandom .right {
+  background-color: brown;
 }/*# sourceMappingURL=main.css.map */
