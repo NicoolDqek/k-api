@@ -13,6 +13,35 @@ const getIntegrante=async(req,res)=>{
     }
 }
 
+const getIntegranteAndPagination=async(req,res)=>{
+
+    let {pagina,limit}=req.query
+
+      pagina= parseInt(pagina) || 1
+      limit= parseInt(limit) || 6
+      const skip= (pagina-1) * limit
+    
+   
+
+    
+
+    try {
+       const [integrante,total]= await Promise.all([
+        Integrante.find().skip(skip).limit(limit),
+        Integrante.countDocuments()
+    ])
+
+        res.status(200).json({
+            data:integrante,
+            pagina,
+            total,
+            totalPagina:Math.ceil(total/limit)
+        })
+    } catch (error) {
+        res.status(500).json({error:'error al traer integrantes o artistas con paginacion'})
+    }
+}
+
 const crearIntegrante=async(req,res)=>{
     try {
         const {nombre,codigo,nacimiento,nacionalidad,grupo,empresa,rol,edad,descripcion,activo,img_principal,img_gallery,subUnidad,fandom}=req.body
@@ -89,4 +118,4 @@ if (rol && rol.length > 0) {
     }
 }
 
-module.exports={getIntegrante,crearIntegrante,getIntegranteByID,filtrosIntegrante}
+module.exports={getIntegrante,crearIntegrante,getIntegranteByID,filtrosIntegrante,getIntegranteAndPagination}

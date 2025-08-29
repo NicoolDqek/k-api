@@ -1,5 +1,6 @@
 const Grupo = require("../models/grupoSchema")
 const Empresa = require("../models/empresaSchema")
+const Album = require("../models/albumSchema")
 
 
 
@@ -93,4 +94,31 @@ const grupoFilter = async (req, res) => {
     }
 };
 
-module.exports={getGrupo,crearGrupo,getGrupoByID,grupoFilter}
+
+const grupoPaginacion = async(req,res)=>{
+
+    let {pagina, limit}=req.query
+    pagina= parseInt(pagina) || 1
+    limit=parseInt(limit) || 6
+    const skip = (pagina - 1) * limit
+
+    const [grupos,total]= await Promise.all([
+        Grupo.find().skip(skip).limit(limit),
+        Grupo.countDocuments()
+    ])
+
+    res.status(200).json({
+        data:grupos,
+        pagina,
+        total,
+        totalPaginas:Math.ceil(total/limit)
+    })
+    try {
+        
+    } catch (error) {
+        res.status(500).json({error:'error paginacioin grupo'})
+        
+    }
+}
+
+module.exports={getGrupo,crearGrupo,getGrupoByID,grupoFilter,grupoPaginacion}

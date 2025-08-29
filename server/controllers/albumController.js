@@ -32,7 +32,7 @@ const crearAlbum=async(req,res)=>{
 const getAlbumByID=async(req,res)=>{
     try {
         const {id}=req.params
-        const album= await Album.findById(id).populate('grupo')
+        const album= await Album.findById(id).populate('grupo').populate('canciones')
          if (!album) {
       return res.status(404).json({ message: "Álbum no encontrado" });
     }
@@ -95,4 +95,38 @@ const albumFiltros=async(req,res)=>{
     }
 }
 
-module.exports={getAlbum,crearAlbum,getAlbumByID,albumFiltros}
+
+
+// paginacion pagina albums
+
+
+const paginacionAlbums=async(req,res)=>{
+
+    let {pagina,limit}= req.query
+    pagina = parseInt(pagina) || 1 
+    limit = parseInt(limit) || 6
+    const skip = (pagina - 1) * limit
+
+
+    const [albums,resultado] = await Promise.all([
+        Album.find().skip(skip).limit(limit),
+        Album.countDocuments()
+    ])
+
+
+    res.status({
+        data:albums,
+        pagina,
+        resultado,
+        totalPaginas: Math.ceil(resultado/limit)
+    })
+     
+    try {
+        
+    } catch (error) {
+        res.status(500).json({error:'error al traer integrantes o artistas con paginacion'})
+        
+    }
+}
+
+module.exports={getAlbum,crearAlbum,getAlbumByID,albumFiltros,paginacionAlbums}

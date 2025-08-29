@@ -17,7 +17,7 @@ const crearCancion=async(req,res)=>{
         const {titulo,codigo,grupo,lanzamiento,album,genero,descripcion,productor,escritor,img_principal,img_galery,video_galery,subUnidad}=req.body
 
         const nuevoAlbum= new Cancion({
-           titulo,codigo,grupo,lanzamiento,album,genero,descripcion,productor,escritor,img_principal,img_galery,video_galery,subUnidad})
+           titulo,codigo,grupo,lanzamiento,album,genero,descripcion,productor,escritor,img_principal,img_galery,video_galery})
 
         const nueva= await nuevoAlbum.save()
 

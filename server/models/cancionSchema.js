@@ -24,9 +24,9 @@ album:{
 type:(mongoose.Schema.Types.ObjectId),
 ref:'album'
 },
-genero:{
+genero:[{
       type:String,
-},
+}],
 
 descripcion:{
 type:String,
@@ -48,11 +48,12 @@ video_galery:[{
 }],
 subUnidad:{
     type:(mongoose.Schema.Types.ObjectId),
-    ref:'subunidad'
+    ref:'subunidad',
+    required: false
     
 }
 
 });
 
 const Cancion= mongoose.model('cancion', cancionSchema);
-module.exports=Cancion
+module.exports=Cancion 
