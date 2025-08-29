@@ -3,11 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import { getAlbumById } from '../../controllers/axios/services';
 import { useContext } from 'react';
 import { ContextGlobal } from '../../context/GlobalContext';
+import MusicCard from './MusicCard';
 
 function CardDetails() {
     
      const [album, setAlbum] = useState(null);
      const [imgPrincipal, setImgPrincipal] = useState("");
+     const [tongle,settongle]=useState(false)
      const {albums}=useContext(ContextGlobal)
      const { id } = useParams(); 
 
@@ -91,7 +93,14 @@ setImgPrincipal(img)
           <p>{album.descripcion}</p>
 
           <span>
-            <button>Canciones</button>
+            <button  onClick={() => {
+    settongle(true); 
+    window.scrollBy({
+      top: window.innerHeight * 0.9,
+      behavior: "smooth"
+    });
+  }}
+>Canciones</button>
             <button><Link className='link-grupo' to={`/grupo/${album.grupo._id}`}>Grupo</Link> </button>
           </span>
 
@@ -111,6 +120,28 @@ setImgPrincipal(img)
              
         </div>
       </div>
+
+
+      {tongle=== true && album.canciones.length > 0 ? (
+
+ <div className="canciones row"   style={{ 
+    backgroundImage: `url(${album.grupo.img_principal})`, 
+    backgroundSize: "cover", 
+    backgroundPosition: "center" 
+  }}>
+
+    <h1 className='text-center titulo'>CANCIONES</h1>
+
+        {album.canciones.map(c=>(
+          <MusicCard cancion={c} album={album}/>  
+        ))}
+          
+          
+             </div>
+      ):(
+       null
+      )}
+     
     </div>
   )
 }
