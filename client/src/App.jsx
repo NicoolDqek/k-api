@@ -6,6 +6,7 @@ import AllPage from './pages/AllPage';
 import CardDetailsGroups from './components/cards/CardDetailsGroups';
 import IdolsDetsilsPage from './pages/IdolsDetsilsPage';
 import ResultPage from './pages/ResultPage'
+import SongsPage from './pages/SongsPage';
 function App() {
   return (
     <>
@@ -16,6 +17,8 @@ function App() {
         <Route path='/grupo/:id' element={<GroupPage/>} />
         <Route path='/integrante/:id' element={<IdolsDetsilsPage />} />
         <Route path='/result' element={<ResultPage/>} />
+        <Route path='/songs' element={<SongsPage/>} />
+
       </Routes>
     </>
   );
