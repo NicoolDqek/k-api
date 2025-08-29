@@ -525,6 +525,60 @@
   color: black;
 }
 
+.canciones {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0 2rem;
+}
+.canciones .titulo {
+  font-size: 50px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 4px;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 10px 0;
+  margin-bottom: 2rem;
+}
+.canciones .card-music {
+  background-color: rgba(0, 0, 0, 0.361);
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+}
+.canciones .card-music .imgp {
+  height: 200px;
+  width: 200px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.canciones .desc .overflay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.575);
+  z-index: 1;
+  top: 0;
+  padding-top: 1rem;
+  left: -100%;
+  transition: 1s ease-in-out;
+}
+.canciones .desc .overflay img {
+  height: 60px;
+  border-radius: 50%;
+}
+.canciones .desc:hover .overflay {
+  left: 0;
+}
+.canciones .desc h1 {
+  font-size: 25px;
+  font-weight: 800;
+}
+
 .all {
   overflow: hidden;
   background-color: black;
