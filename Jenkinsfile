@@ -10,37 +10,37 @@ pipeline {
             }
         }
 
-        stage('Install Backend Dependencies') {
+        stage('Install Server Dependencies') {
             steps {
-                sh 'cd backend && npm install'
+                sh 'cd server && npm install'
             }
         }
 
-        stage('Install Frontend Dependencies') {
+        stage('Install Client Dependencies') {
             steps {
-                sh 'cd frontend && npm install'
+                sh 'cd client && npm install'
             }
         }
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker compose build'
             }
         }
 
         stage('Run Containers') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker compose up -d'
             }
         }
     }
 
     post {
-        failure {
-            echo 'El pipeline falló. Revisar logs.'
-        }
         success {
             echo 'Pipeline ejecutado correctamente.'
+        }
+        failure {
+            echo 'El pipeline falló. Revisar logs.'
         }
     }
 }
