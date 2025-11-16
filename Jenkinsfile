@@ -2,49 +2,45 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/NicoolDqek/k-api.git'
+                git url: 'https://github.com/NicoolDqek/k-api.git',
+                    branch: 'main',
+                    credentialsId: 'github-token'
             }
         }
 
         stage('Install Backend Dependencies') {
             steps {
-                dir('server') {
-                    sh 'npm install'
-                }
+                sh 'cd backend && npm install'
             }
         }
 
         stage('Install Frontend Dependencies') {
             steps {
-                dir('client') {
-                    sh 'npm install'
-                }
+                sh 'cd frontend && npm install'
             }
         }
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build'
+                sh 'docker-compose build'
             }
         }
 
         stage('Run Containers') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker-compose up -d'
             }
         }
     }
 
     post {
-        success {
-            echo "Pipeline completado con éxito!"
-        }
         failure {
-            echo "El pipeline falló. Revisar logs."
+            echo 'El pipeline falló. Revisar logs.'
+        }
+        success {
+            echo 'Pipeline ejecutado correctamente.'
         }
     }
 }
