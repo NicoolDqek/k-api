@@ -7,6 +7,7 @@ import CardDetailsGroups from './components/cards/CardDetailsGroups';
 import IdolsDetsilsPage from './pages/IdolsDetsilsPage';
 import ResultPage from './pages/ResultPage'
 import SongsPage from './pages/SongsPage';
+import NewData from './pages/NewData';
 function App() {
   return (
     <>
@@ -18,7 +19,8 @@ function App() {
         <Route path='/integrante/:id' element={<IdolsDetsilsPage />} />
         <Route path='/result' element={<ResultPage/>} />
         <Route path='/songs' element={<SongsPage/>} />
-
+        <Route path='/newData' element={<NewData/>} />
+        
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@
 const Cancion = require("../models/cancionSchema")
 
 const getCancion=async(req,res)=>{
-    try {
+    try {   
         const cancion= await Cancion.find()
         res.status(200).json(cancion)
     } catch (error) {

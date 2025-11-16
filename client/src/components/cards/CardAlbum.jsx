@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 function CardAlbum({album}) {
    
   return (
-    <div className='card_album col-lg-5 col-md-4 col-sm-12'  style={{ backgroundImage: `url('${album.img_principal}')` }}
+    <div className='card_album'  style={{ backgroundImage: `url('${album.img_principal}')` }}
 >
      <div className="overlay"></div>
      <div>

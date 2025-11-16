@@ -43,7 +43,7 @@ function Navbar() {
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link " aria-disabled="true">Gallery</a>
+          <Link to={'/newData'} className="nav-link " aria-disabled="true">Nuevo</Link>
         </li>
       </ul>
       <form onSubmit={formValor}  className="d-flex" role="search">

@@ -66,7 +66,7 @@ console.log("Endpoint filtrosIdols params:", { empresa, rol });
     <div className='container-fluid all'>
     
       <div className="row">
-        <div className="col-lg-2 side-bar bg-black ext-white p-3 vh-100">
+        <div className="col-lg-2 col-md-3 col-sm-3 side-bar bg-black ext-white p-3 vh-lg-100">
           <h3 className='text-center'><Link to="/" className="text-white text-decoration-none">K-Api</Link></h3>
           <ul className="list-unstyled mt-4">
             <li><button  onClick={()=>render(grupos,'grupos')} className="btn btn-outline-light w-100 my-2">Grupos</button></li>
@@ -77,16 +77,7 @@ console.log("Endpoint filtrosIdols params:", { empresa, rol });
         </div>
 
         
-        <div className="col-lg-10 right ">
-          <div className="card">
-            <img
-              src="https://wallpapercave.com/wp/wp15515625.jpg"
-              className="card-img"
-              alt="K-pop"
-              
-            />
-            
-          </div>
+        <div className="col-lg-10 col-md-9 col-sm-9  right ">
           <Navbar/>
           <div className="mt-4 result">
             <h4>{valor? valor:"ALBUMS"}</h4>
@@ -157,7 +148,7 @@ console.log("Endpoint filtrosIdols params:", { empresa, rol });
               
               </div>)}
               
-              <div className='container-fluid  card_section'>
+              <div className='container-fluid  card_section col '>
                
 
 {filters === undefined ? (
