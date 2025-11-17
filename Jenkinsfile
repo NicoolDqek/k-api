@@ -24,7 +24,15 @@ pipeline {
 
         stage('Clean Old Containers') {
             steps {
-                sh 'docker-compose down -v || true'
+                sh '''
+                # Forzar eliminación de contenedores conflictivos
+                docker rm -f kapp-mongo || true
+                docker rm -f kapp-pipeline-backend || true
+                docker rm -f kapp-pipeline-frontend || true
+                
+                # Bajar cualquier servicio que esté corriendo y eliminar volúmenes
+                docker-compose down -v || true
+                '''
             }
         }
 
