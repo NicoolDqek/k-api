@@ -1,4 +1,4 @@
-pipeline {
+ pipeline {
     agent any
 
     stages {
@@ -24,11 +24,9 @@ pipeline {
 
         stage('Clean Old Containers') {
             steps {
-                // Elimina contenedores existentes de mongo, backend y frontend
                 sh '''
-                docker rm -f kapp-mongo || true
-                docker rm -f kapp-pipeline-backend || true
-                docker rm -f kapp-pipeline-frontend || true
+                echo "Eliminando contenedores existentes..."
+                docker rm -f kapp-mongo kapp-backend kapp-frontend || true
                 docker-compose down -v || true
                 '''
             }
@@ -42,7 +40,7 @@ pipeline {
 
         stage('Run Containers') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker-compose up -d --force-recreate'
             }
         }
     }
