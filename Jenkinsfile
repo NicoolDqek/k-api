@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/NicoolDqek/k-api.git',
@@ -20,6 +19,12 @@ pipeline {
         stage('Install Client Dependencies') {
             steps {
                 sh 'cd client && npm install'
+            }
+        }
+
+        stage('Clean Old Containers') {
+            steps {
+                sh 'docker-compose down -v || true'
             }
         }
 
